@@ -86,7 +86,7 @@ Este código contiene mucha información, así que vamos a repasarlo línea por 
 use std::io;
 ```
 
-De forma predeterminada, Rust incluye solo unos pocos tipos en el alcance de cada programa en [el *preludio*](../std/prelude/index.html)<!-- ignorar --> . Si un tipo que desea usar no está en el preludio, debe traer ese tipo al alcance explícitamente con una declaración de `use` . El uso de la biblioteca `std::io` proporciona una serie de funciones útiles, incluida la capacidad de aceptar la entrada del usuario.
+De forma predeterminada, Rust incluye solo unos pocos tipos en el alcance de cada programa en [el *preludio*]<!-- ignorar --> . Si un tipo que desea usar no está en el preludio, debe traer ese tipo al alcance explícitamente con una declaración de `use` . El uso de la biblioteca `std::io` proporciona una serie de funciones útiles, incluida la capacidad de aceptar la entrada del usuario.
 
 Como vio en el Capítulo 1, la función `main` es el punto de entrada al programa:
 
@@ -129,7 +129,7 @@ let mut bar = 5; // mutable
 
 > Nota: La sintaxis `//` inicia un comentario que continúa hasta el final de la línea. Rust ignora todo en los comentarios, que se analizan con más detalle en el Capítulo 3.
 
-Let’s return to the guessing game program. You now know that `let mut guess` will introduce a mutable variable named `guess`. On the other side of the equal sign (`=`) is the value that `guess` is bound to, which is the result of calling `String::new`, a function that returns a new instance of a `String`. <a href="../std/string/struct.String.html" data-md-type="link">`String`</a><!-- ignore --> is a string type provided by the standard library that is a growable, UTF-8 encoded bit of text.
+jqygkuhsjdpxagsjbkhdasdb<!-- ignore -->gfasdycngfxksbagdjcxhasfngdcx
 
 La `::` sintaxis en la `::new` línea indica que `new` es una *función asociada* del tipo `String` . Una función asociada se implementa en un tipo, en este caso `String` , en lugar de en una instancia particular de `String` . Algunos lenguajes llaman a esto un *método estático* .
 
@@ -144,9 +144,9 @@ io::stdin().read_line(&mut guess)
     .expect("Failed to read line");
 ```
 
-Si no hubiéramos puesto la línea `use std::io` al principio del programa, podríamos haber escrito esta llamada de función como `std::io::stdin` . La función `stdin` devuelve una instancia de [`std::io::Stdin`](../std/io/struct.Stdin.html)<!-- ignorar --> , que es un tipo que representa un identificador de la entrada estándar para su terminal.
+Si no hubiéramos puesto la línea `use std::io` al principio del programa, podríamos haber escrito esta llamada de función como `std::io::stdin` . La función `stdin` devuelve una instancia de [`std::io::Stdin`]<!-- ignorar --> , que es un tipo que representa un identificador de la entrada estándar para su terminal.
 
-La siguiente parte del código, `.read_line(&mut guess)` , llama a [`read_line`](../std/io/struct.Stdin.html#method.read_line)<!-- ignorar --> en el identificador de entrada estándar para obtener la entrada del usuario. También estamos pasando un argumento a `read_line` : `&mut guess` .
+La siguiente parte del código, `.read_line(&mut guess)` , llama a [`read_line`]<!-- ignorar --> en el identificador de entrada estándar para obtener la entrada del usuario. También estamos pasando un argumento a `read_line` : `&mut guess` .
 
 The job of `read_line` is to take whatever the user types into standard input and place that into a string, so it takes that string as an argument. The string argument needs to be mutable so the method can change the string’s content by adding the user input.
 
@@ -168,13 +168,13 @@ io::stdin().read_line(&mut guess).expect("Failed to read line");
 
 Sin embargo, una línea larga es difícil de leer, por lo que es mejor dividirla: dos líneas para dos llamadas a métodos. Ahora analicemos lo que hace esta línea.
 
-Como se mencionó anteriormente, `read_line` pone lo que el usuario escribe en la cadena que le estamos pasando, pero también devuelve un valor, en este caso, un [`io::Result`](../std/io/type.Result.html)<!-- ignorar --> . Rust tiene varios tipos denominados `Result` en su biblioteca estándar: un <a href="../std/result/enum.Result.html" data-md-type="link">`Result`</a> genérico<!-- ignorar --> así como versiones específicas para submódulos, como `io::Result` .
+Como se mencionó anteriormente, `read_line` pone lo que el usuario escribe en la cadena que le estamos pasando, pero también devuelve un valor, en este caso, un [`io::Result`]<!-- ignorar --> . Rust tiene varios tipos denominados `Result` en su biblioteca estándar: un <a href="../std/result/enum.Result.html" data-md-type="link">`Result`</a> genérico<!-- ignorar --> así como versiones específicas para submódulos, como `io::Result` .
 
-Los tipos de `Result` son [*enumeraciones*](ch06-00-enums.html)<!-- ignorar --> , a menudo denominado *enumeraciones* . Una enumeración es un tipo que puede tener un conjunto fijo de valores, y esos valores se denominan *variantes de* la enumeración. El capítulo 6 cubrirá las enumeraciones con más detalle.
+Los tipos de `Result` son [*enumeraciones*]<!-- ignorar --> , a menudo denominado *enumeraciones* . Una enumeración es un tipo que puede tener un conjunto fijo de valores, y esos valores se denominan *variantes de* la enumeración. El capítulo 6 cubrirá las enumeraciones con más detalle.
 
 Para `Result` , las variantes son `Ok` o `Err` . La variante `Ok` indica que la operación fue exitosa, y dentro de `Ok` está el valor generado exitosamente. La variante `Err` significa que la operación falló y `Err` contiene información sobre cómo o por qué falló la operación.
 
-El propósito de estos tipos de `Result` es codificar la información de manejo de errores. Los valores del tipo de `Result` , como los valores de cualquier tipo, tienen métodos definidos. Una instancia de `io::Result` tiene un [método de `expect`](../std/result/enum.Result.html#method.expect)<!-- ignorar --> que puedes llamar. Si esta instancia de `io::Result` es un valor `Err` , `expect` hará que el programa se bloquee y muestre el mensaje que pasó como argumento `expect` . Si el método `read_line` devuelve `Err` , probablemente sea el resultado de un error proveniente del sistema operativo subyacente. Si esta instancia de `io::Result` es un valor `Ok` , `expect` tomará el valor de retorno que `Ok` tiene y le devolverá solo ese valor para que pueda usarlo. En este caso, ese valor es el número de bytes que el usuario ingresó en la entrada estándar.
+El propósito de estos tipos de `Result` es codificar la información de manejo de errores. Los valores del tipo de `Result` , como los valores de cualquier tipo, tienen métodos definidos. Una instancia de `io::Result` tiene un [método de `expect`]<!-- ignorar --> que puedes llamar. Si esta instancia de `io::Result` es un valor `Err` , `expect` hará que el programa se bloquee y muestre el mensaje que pasó como argumento `expect` . Si el método `read_line` devuelve `Err` , probablemente sea el resultado de un error proveniente del sistema operativo subyacente. Si esta instancia de `io::Result` es un valor `Ok` , `expect` tomará el valor de retorno que `Ok` tiene y le devolverá solo ese valor para que pueda usarlo. En este caso, ese valor es el número de bytes que el usuario ingresó en la entrada estándar.
 
 Si no llama a `expect` , el programa se compilará, pero recibirá una advertencia:
 
@@ -232,7 +232,7 @@ En este punto, la primera parte del juego está lista: recibimos información de
 
 ## Generando un número secreto
 
-A continuación, necesitamos generar un número secreto que el usuario intentará adivinar. El número secreto debe ser diferente cada vez para que el juego sea divertido de jugar más de una vez. Usemos un número aleatorio entre 1 y 100 para que el juego no sea demasiado difícil. Rust aún no incluye la funcionalidad de números aleatorios en su biblioteca estándar. Sin embargo, el equipo de Rust proporciona una [caja de `rand`](https://crates.io/crates/rand) .
+A continuación, necesitamos generar un número secreto que el usuario intentará adivinar. El número secreto debe ser diferente cada vez para que el juego sea divertido de jugar más de una vez. Usemos un número aleatorio entre 1 y 100 para que el juego no sea demasiado difícil. Rust aún no incluye la funcionalidad de números aleatorios en su biblioteca estándar. Sin embargo, el equipo de Rust proporciona una [caja de `rand`] .
 
 ### Usar una caja para obtener más funcionalidad
 
@@ -253,7 +253,7 @@ El uso de cajas externas por parte de Cargo es donde realmente brilla. Antes de 
 rand = "0.5.5"
 ```
 
-En el archivo *Cargo.toml* , todo lo que sigue a un encabezado es parte de una sección que continúa hasta que comienza otra sección. La sección `[dependencies]` es donde le dice a Cargo de qué cajas externas depende su proyecto y qué versiones de esas cajas necesita. En este caso, especificaremos la caja `rand` con el especificador de versión semántica `0.5.5` . Cargo entiende el [control de versiones semántico](http://semver.org)<!-- ignorar --> (a veces llamado *SemVer* ), que es un estándar para escribir números de versión. El número `0.5.5` es en realidad una abreviatura de `^0.5.5` , que significa "cualquier versión que tenga una API pública compatible con la versión 0.5.5".
+En el archivo *Cargo.toml* , todo lo que sigue a un encabezado es parte de una sección que continúa hasta que comienza otra sección. La sección `[dependencies]` es donde le dice a Cargo de qué cajas externas depende su proyecto y qué versiones de esas cajas necesita. En este caso, especificaremos la caja `rand` con el especificador de versión semántica `0.5.5` . Cargo entiende el [control de versiones semántico]<!-- ignorar --> (a veces llamado *SemVer* ), que es un estándar para escribir números de versión. El número `0.5.5` es en realidad una abreviatura de `^0.5.5` , que significa "cualquier versión que tenga una API pública compatible con la versión 0.5.5".
 
 Ahora, sin cambiar nada del código, construyamos el proyecto, como se muestra en el Listado 2-2.
 
@@ -278,7 +278,7 @@ $ cargo build
 
 Es posible que vea diferentes números de versión (¡pero todos serán compatibles con el código, gracias a SemVer!), Y las líneas pueden estar en un orden diferente.
 
-Ahora que tenemos una dependencia externa, Cargo obtiene las últimas versiones de todo del *registro* , que es una copia de los datos de [Crates.io](https://crates.io/) . Crates.io es donde las personas en el ecosistema de Rust publican sus proyectos de código abierto de Rust para que otros los usen.
+Ahora que tenemos una dependencia externa, Cargo obtiene las últimas versiones de todo del *registro* , que es una copia de los datos de [Crates.io] . Crates.io es donde las personas en el ecosistema de Rust publican sus proyectos de código abierto de Rust para que otros los usen.
 
 Después de actualizar el registro, Cargo revisa la sección `[dependencies]` y descarga las cajas que aún no tiene. En este caso, aunque solo enumeramos `rand` como una dependencia, Cargo también tomó `libc` y `rand_core` , porque `rand` depende de que funcionen. Después de descargar las cajas, Rust las compila y luego compila el proyecto con las dependencias disponibles.
 
@@ -323,7 +323,7 @@ rand = "0.6.0"
 
 La próxima vez que ejecute `cargo build` , Cargo actualizará el registro de cajas disponibles y reevaluará sus requisitos de `rand` acuerdo con la nueva versión que haya especificado.
 
-Hay mucho más que decir sobre [Cargo](http://doc.crates.io)<!-- ignorar --> y [su ecosistema](http://doc.crates.io/crates-io.html)<!-- ignorar --> que discutiremos en el Capítulo 14, pero por ahora, eso es todo lo que necesita saber. Cargo facilita la reutilización de bibliotecas, por lo que los rustáceos pueden escribir proyectos más pequeños que se ensamblan a partir de varios paquetes.
+Hay mucho más que decir sobre [Cargo]<!-- ignorar --> y [su ecosistema]<!-- ignorar --> que discutiremos en el Capítulo 14, pero por ahora, eso es todo lo que necesita saber. Cargo facilita la reutilización de bibliotecas, por lo que los rustáceos pueden escribir proyectos más pequeños que se ensamblan a partir de varios paquetes.
 
 ### Generando un número aleatorio
 
@@ -415,7 +415,7 @@ fn main() {
 
 El primer bit nuevo aquí es otra declaración de `use` , que trae un tipo llamado `std::cmp::Ordering` al alcance de la biblioteca estándar. Al igual que `Result` , `Ordering` es otra enumeración, pero las variantes de `Ordering` son `Less` , `Greater` e `Equal` . Estos son los tres resultados que son posibles cuando compara dos valores.
 
-Luego agregamos cinco líneas nuevas en la parte inferior que usan el tipo de `Ordering` . El método `cmp` compara dos valores y se puede llamar en cualquier cosa que se pueda comparar. Toma una referencia a lo que quieras comparar: aquí se compara la `guess` con el `secret_number` . Luego, devuelve una variante de la enumeración `Ordering` incluimos en el alcance con la declaración de `use` . Usamos un [`match`](ch06-02-match.html)<!-- ignorar --> expresión para decidir qué hacer a continuación en función de qué variante de `Ordering` se devolvió desde la llamada a `cmp` con los valores en `guess` y `secret_number` .
+Luego agregamos cinco líneas nuevas en la parte inferior que usan el tipo de `Ordering` . El método `cmp` compara dos valores y se puede llamar en cualquier cosa que se pueda comparar. Toma una referencia a lo que quieras comparar: aquí se compara la `guess` con el `secret_number` . Luego, devuelve una variante de la enumeración `Ordering` incluimos en el alcance con la declaración de `use` . Usamos un [`match`]<!-- ignorar --> expresión para decidir qué hacer a continuación en función de qué variante de `Ordering` se devolvió desde la llamada a `cmp` con los valores en `guess` y `secret_number` .
 
 Una expresión de `match` está formada por *brazos* . Un brazo consta de un *patrón* y el código que se debe ejecutar si el valor dado al comienzo de la expresión de `match` ajusta al patrón de ese brazo. Rust toma el valor dado para `match` y mira a través del patrón de cada brazo por turno. La construcción y los patrones de `match` son características poderosas en Rust que le permiten expresar una variedad de situaciones que su código puede encontrar y asegurarse de manejarlas todas. Estas características se cubrirán en detalle en el Capítulo 6 y el Capítulo 18, respectivamente.
 
@@ -477,7 +477,7 @@ Creamos una variable llamada `guess` . Pero espera, ¿el programa no tiene ya un
 
 We bind `guess` to the expression `guess.trim().parse()`. The `guess` in the expression refers to the original `guess` that was a `String` with the input in it. The `trim` method on a `String` instance will eliminate any whitespace at the beginning and end. Although `u32` can contain only numerical characters, the user must press <span class="keystroke">enter</span> to satisfy `read_line`. When the user presses <span class="keystroke">enter</span>, a newline character is added to the string. For example, if the user types <span class="keystroke">5</span> and presses <span class="keystroke">enter</span>, `guess` looks like this: `5\n`. The `\n` represents “newline,” the result of pressing <span class="keystroke">enter</span>. The `trim` method eliminates `\n`, resulting in just `5`.
 
-The [`parse` method on strings](../std/primitive.str.html#method.parse)<!-- ignore --> parses a string into some kind of number. Because this method can parse a variety of number types, we need to tell Rust the exact number type we want by using `let guess: u32`. The colon (`:`) after `guess` tells Rust we’ll annotate the variable’s type. Rust has a few built-in number types; the `u32` seen here is an unsigned, 32-bit integer. It’s a good default choice for a small positive number. You’ll learn about other number types in Chapter 3. Additionally, the `u32` annotation in this example program and the comparison with `secret_number` means that Rust will infer that `secret_number` should be a `u32` as well. So now the comparison will be between two values of the same type!
+The [`parse` method on strings]<!-- ignore --> parses a string into some kind of number. Because this method can parse a variety of number types, we need to tell Rust the exact number type we want by using `let guess: u32`. The colon (`:`) after `guess` tells Rust we’ll annotate the variable’s type. Rust has a few built-in number types; the `u32` seen here is an unsigned, 32-bit integer. It’s a good default choice for a small positive number. You’ll learn about other number types in Chapter 3. Additionally, the `u32` annotation in this example program and the comparison with `secret_number` means that Rust will infer that `secret_number` should be a `u32` as well. So now the comparison will be between two values of the same type!
 
 The call to `parse` could easily cause an error. If, for example, the string contained `A👍%`, there would be no way to convert that to a number. Because it might fail, the `parse` method returns a `Result` type, much as the `read_line` method does (discussed earlier in <a href="#handling-potential-failure-with-the-result-type" data-md-type="link">“Handling Potential Failure with the `Result` Type”</a><!-- ignore -->). We’ll treat this `Result` the same way by using the `expect` method again. If `parse` returns an `Err` `Result` variant because it couldn’t create a number from the string, the `expect` call will crash the game and print the message we give it. If `parse` can successfully convert the string to a number, it will return the `Ok` variant of `Result`, and `expect` will return the number that we want from the `Ok` value.
 
@@ -682,3 +682,18 @@ fn main() {
 En este punto, ha construido con éxito el juego de adivinanzas. ¡Felicidades!
 
 Este proyecto fue una forma práctica de presentarle muchos conceptos nuevos de Rust: `let` , `match` , métodos, funciones asociadas, el uso de cajas externas y más. En los próximos capítulos, aprenderá sobre estos conceptos con más detalle. El Capítulo 3 cubre conceptos que tienen la mayoría de los lenguajes de programación, como variables, tipos de datos y funciones, y muestra cómo usarlos en Rust. El Capítulo 4 explora la propiedad, una característica que hace que Rust sea diferente de otros idiomas. El Capítulo 5 analiza las estructuras y la sintaxis de los métodos, y el Capítulo 6 explica cómo funcionan las enumeraciones.
+
+
+[el *preludio*]: ../std/prelude/index.html
+[`std::io::Stdin`]: ../std/string/struct.String.html
+[`read_line`]: ../std/io/struct.Stdin.html
+[`io::Result`]: ../std/io/struct.Stdin.html#method.read_line
+[*enumeraciones*]: ../std/io/type.Result.html
+[método de `expect`]: ../std/result/enum.Result.html
+[caja de `rand`]: ch06-00-enums.html
+[control de versiones semántico]: ../std/result/enum.Result.html#method.expect
+[Crates.io]: https://crates.io/crates/rand
+[Cargo]: http://semver.org
+[su ecosistema]: https://crates.io/
+[`match`]: http://doc.crates.io
+[`parse` method on strings]: http://doc.crates.io/crates-io.html
